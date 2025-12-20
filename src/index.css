@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
 @import "flowbite/src/themes/default";
-
-/* The Flowbite React lines have been removed
-
-/* The general Flowbite theme import has been removed
-
-/* Any other custom CSS below this line */
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";

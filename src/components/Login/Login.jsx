@@ -5,16 +5,15 @@ import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { authContext } from "../../context/AuthContext";
 
 // Zod schema
 const schemaForm = zod.object({
-
   email: zod.email(),
   password: zod.string().regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
     "Password must be 8+ chars- zod"),
-
 })
-
 
 export default function Login() {
   const navigate = useNavigate()
@@ -22,6 +21,10 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
   const [succeedMessage, setSucceedMessage] = useState(false)
+
+  const {insertUserToken} = useContext(authContext);
+  
+
 
   const { register, handleSubmit, formState, setError } = useForm({
     defaultValues: {
@@ -36,24 +39,23 @@ export default function Login() {
   // register send the data to form
   // add axios in the myhandleSubmit function
   function myhandleSubmit(data) {
- 
-      setLoading(true)
+    setLoading(true)
     axios.post("https://linked-posts.routemisr.com/users/signin", data)
       .then((res) => {
-       
-        console.log(res.data.message)
+        console.log({res})
+        console.log(res.data.token)
+        const token = res.data.token;
+        insertUserToken(token)
+        localStorage.setItem("tkn",res.data.token)
         setSucceedMessage(true)
-      
+
         setTimeout(() => {
           setSucceedMessage(false)
           navigate("/home")
         }, 3000)
 
-        
-
       })
       .catch((err) => {
-        
         console.log("Axios message error", err.response.data.error)
         setErrorMessage(err.response.data.error)
 
@@ -88,13 +90,13 @@ export default function Login() {
         </div>
         {formState.errors.password && formState.touchedFields.password && <p className="text-red-500"> {formState.errors.password?.message}</p>}
 
- 
+
 
 
         {/* // Submit button */}
         <button type="submit"
           className="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-           {loading ? <BeatLoader /> : "Login"}
+          {loading ? <BeatLoader /> : "Login"}
         </button>
       </form>
       {/* { <BeatLoader />} */}
