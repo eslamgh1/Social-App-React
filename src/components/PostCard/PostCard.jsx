@@ -16,7 +16,7 @@ export default function PostCard({ post }) {
 
   return (
     <div className="bg-amber-100 rounded-lg p-5">
-      <PostHeader post={post} user={user}/>
+      <PostHeader name={user.name} photo={user.photo} createdAt={post.createdAt}/>
 
       <div className="post-content">
         <p>{post.body}</p>
