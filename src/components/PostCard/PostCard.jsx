@@ -1,4 +1,6 @@
 import React from "react"
+import CommentCard from "../CommentCard/CommentCard"
+import PostHeader from "../PostHeader/PostHeader"
 // import CommendCard from "../CommendCard/CommendCard"
 // import PostHeader from "../CommendCard/CommendCard"
 
@@ -14,18 +16,7 @@ export default function PostCard({ post }) {
 
   return (
     <div className="bg-amber-100 rounded-lg p-5">
-      <div className="post-header flex justify-between">
-        <div className="left-part flex ">
-          <img src={post.user.photo} className="w-10 h-10 rounded-full" alt={post.user.name} />
-          <div className="info">
-            <h5>{post.user.name}</h5>
-            <p>{post.createdAt}</p>
-          </div>
-        </div>
-        <div className="right-part bg-red-200">
-          <i class="fa-solid fa-ellipsis"></i>
-        </div>
-      </div>
+      <PostHeader post={post} user={user}/>
 
       <div className="post-content">
         <p>{post.body}</p>
@@ -48,22 +39,9 @@ export default function PostCard({ post }) {
         </div>
       </div>
 
-      <div className="comment-part bg-blue-400">
-        <div className="comment flex justify-between">
-          <div className="left-part flex ">
-            <img onError={(e)=>{e.target.onerror = null ; e.target.src =STATIC_USER_IMAGE}} src={firstComment.commentCreator.photo} className="w-10 h-10 rounded-full" alt={firstComment.commentCreator.name} />
-            <div className="info">
-              <h5>{firstComment.commentCreator.name}</h5>
-              <p>{firstComment.createdAt}</p>
-            </div>
-          </div>
-          <div className="right-part bg-red-200">
-            <i class="fa-solid fa-ellipsis"></i>
-          </div>
-        </div>
+      {firstComment && <CommentCard commentDetails={firstComment} />}
 
-        <p>First comment here.............</p>
-      </div>
+
 
     </div>
   )
