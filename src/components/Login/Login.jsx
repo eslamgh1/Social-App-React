@@ -56,7 +56,7 @@ export default function Login() {
 
       })
       .catch((err) => {
-        console.log("Axios message error", err.response.data.error)
+        console.log("Axios message error", err)
         setErrorMessage(err.response.data.error)
 
         setTimeout(() => {

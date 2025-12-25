@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 
 import 'flowbite/dist/flowbite.min.js'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 
 createRoot(document.getElementById('root')).render(
