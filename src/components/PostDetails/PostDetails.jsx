@@ -43,7 +43,7 @@ export default function PostDetails() {
 
       {/* <h1>Post Details Page</h1> */}
     <div className="w-3/4 mx-auto">
-    <PostCard post={data.data.post}/>
+    <PostCard post={data.data.post} isSinglePost={true}/>
 
     </div>
 

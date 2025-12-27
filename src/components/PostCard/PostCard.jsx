@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 // import PostHeader from "../CommendCard/CommendCard"
 
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, isSinglePost }) {
 
   const user = post.user
   const firstComment = post.comments?.[0]
@@ -41,11 +41,12 @@ export default function PostCard({ post }) {
       </div>
 
       {/* // Passing Params via Props (The "React Way") Define the Route */}
-      <Link to= {`/postdetails/${post.id}`} className="text-center text-blue-600 font-bold block">
+      {!isSinglePost && <Link to={`/postdetails/${post.id}`} className="text-center text-blue-600 font-bold block">
         view more comments...
-      </Link>
+      </Link>}
+      {isSinglePost && post.comments?.map(Comment => <CommentCard commentDetails={Comment} />)}
 
-      {firstComment && <CommentCard commentDetails={firstComment} />}
+      {!isSinglePost && firstComment && <CommentCard commentDetails={firstComment} />}
 
 
 

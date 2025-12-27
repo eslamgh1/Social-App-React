@@ -59,7 +59,7 @@ export default function Home() {
         <>
 
             <div className="w-1/2 mx-auto bg-gray-400 flex flex-col gap-3">
-                {data.data.posts.map(post => <PostCard key={post._id} post={post} />
+                {data.data.posts.map(post => <PostCard key={post._id} post={post} isSinglePost={false}/>
                 )
                 }
 
