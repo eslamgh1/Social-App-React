@@ -1,6 +1,7 @@
 import React from "react"
 import CommentCard from "../CommentCard/CommentCard"
 import PostHeader from "../PostHeader/PostHeader"
+import { Link } from "react-router-dom"
 // import CommendCard from "../CommendCard/CommendCard"
 // import PostHeader from "../CommendCard/CommendCard"
 
@@ -16,7 +17,7 @@ export default function PostCard({ post }) {
 
   return (
     <div className="bg-amber-100 rounded-lg p-5">
-      <PostHeader name={user.name} photo={user.photo} createdAt={post.createdAt}/>
+      <PostHeader name={user.name} photo={user.photo} createdAt={post.createdAt} />
 
       <div className="post-content">
         <p>{post.body}</p>
@@ -38,6 +39,11 @@ export default function PostCard({ post }) {
           <h5>Share </h5>
         </div>
       </div>
+
+      {/* // Passing Params via Props (The "React Way") Define the Route */}
+      <Link to= {`/postdetails/${post.id}`} className="text-center text-blue-600 font-bold block">
+        view more comments...
+      </Link>
 
       {firstComment && <CommentCard commentDetails={firstComment} />}
 

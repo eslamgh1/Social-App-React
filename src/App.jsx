@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
 import Profile from "./components/Profile/Profile"
 import AuthUser from "./components/ProtectedRoute/AuthUser"
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query"
+import PostDetails from "./components/PostDetails/PostDetails"
 
 
 
@@ -20,7 +21,9 @@ const router = createBrowserRouter([
       { path: 'login', element: <AuthUser><Login /></AuthUser> },
       { path: 'register', element: <Register /> },
       { path: 'profile', element: <ProtectedRoute><Profile /></ProtectedRoute> },
+      { path: 'postdetails/:id', element: <ProtectedRoute> <PostDetails /></ProtectedRoute> },
       { path: '*', element: <div><h1>Not found</h1></div> }
+
 
     ]
   }

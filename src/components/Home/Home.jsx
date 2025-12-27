@@ -9,8 +9,6 @@ import { useQuery } from "@tanstack/react-query"
 export default function Home() {
     const [allPosts, setAllPosts] = useState(null)
 
-
-
     // function getAllPosts() {
     //     axios.get("https://linked-posts.routemisr.com/posts?limit=5", {
     //         headers: {
@@ -29,6 +27,7 @@ export default function Home() {
 
 
     // 1. This function just returns the Promise (the "logic")
+    
     function getAllPosts() {
         return axios.get("https://linked-posts.routemisr.com/posts?limit=5", {
             headers: {
@@ -47,6 +46,7 @@ export default function Home() {
 
     console.log({data})
 
+    // It is nesseccary to aavoid: Cannot read properties of undefined (reading 'data')
     if (isLoading){
         return <Spinner />
     }

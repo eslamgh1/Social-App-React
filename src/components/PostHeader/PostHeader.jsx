@@ -17,7 +17,7 @@ export default function PostHeader({photo , name,createdAt}) {
           </div>
         </div>
         <div className="right-part bg-red-200">
-          <i class="fa-solid fa-ellipsis"></i>
+          <i className="fa-solid fa-ellipsis"></i>
         </div>
       </div>
 
