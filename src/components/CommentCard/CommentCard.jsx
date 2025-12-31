@@ -3,7 +3,7 @@ import PostHeader from "../PostHeader/PostHeader"
 
 export default function CommentCard({ commentDetails }) {
 
-  console.log({ commentDetails })
+  // console.log({ commentDetails })
 
   const STATIC_USER_IMAGE = "https://res.cloudinary.com/demo/image/upload/d_avatar.png/non_existent_user.png"
 

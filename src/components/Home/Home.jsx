@@ -44,7 +44,7 @@ export default function Home() {
     
     // const allPosts = data?.data.posts
 
-    console.log({data})
+    // console.log({data})
 
     // It is nesseccary to aavoid: Cannot read properties of undefined (reading 'data')
     if (isLoading){
