@@ -6,7 +6,7 @@ import axios from "axios";
 import { FadeLoader } from "react-spinners";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export default function PostCard({ post, isSinglePost }) {
+export default function PostCard({ post, isSinglePost = false }) {
   const [commentFieldValue, setCommentFieldValue] = useState("");
   
   // 1. Initialize QueryClient at the top level (Fixes Hook Violation)
@@ -17,9 +17,6 @@ export default function PostCard({ post, isSinglePost }) {
 
   const firstComment = post.comments?.[0];
   const allCommentsReversed = structuredClone(post).comments?.reverse()
-
-  
-
   // Use spread to reverse without mutating original data
 
   // Function to handle the API call
@@ -59,7 +56,7 @@ export default function PostCard({ post, isSinglePost }) {
 
   return (
     <div className="bg-amber-100 rounded-lg p-5 mb-4">
-      <PostHeader name={user.name} photo={user.photo} createdAt={post.createdAt} />
+      <PostHeader isPostPart={true} name={user.name} photo={user.photo} createdAt={post.createdAt} postUserId={user._id} />
 
       <div className="post-content my-3">
         <p className="mb-2">{post.body}</p>

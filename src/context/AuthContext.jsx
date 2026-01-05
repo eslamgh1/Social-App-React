@@ -3,18 +3,29 @@ import { useEffect } from "react";
 import { useState } from "react"
 import { createContext } from "react"
 import { set } from "zod";
+import { jwtDecode } from "jwt-decode";
 
 
 export const authContext = createContext();
 
 export default function AuthContextProvider({ children }) {
-
-    const [token, setToken] = useState(function(){
+    // lazy loading solution instead of useEffect
+    const [token, setToken] = useState(function () {
         return localStorage.getItem("tkn")
     })
+    const [userId, setUserId] = useState(null)
 
 
+    useEffect(function () {
+        if (token) {
+            const userId = jwtDecode(token).user
+            setUserId(userId)
+            console.log(userId)
+        }
+    }, [token])
 
+
+    // handle token user refresh >> I used lazy loading solution instead of useEffect
     // useEffect(function () {
     //     const tokenFromLocalStorage = localStorage.getItem("tkn");
     //     if (tokenFromLocalStorage) {
@@ -24,15 +35,17 @@ export default function AuthContextProvider({ children }) {
 
     function insertUserToken(authToken) {
         setToken(authToken)
-        console.log("insertUserToken done:", token)
     }
 
     function clearUserToken() {
         setToken(null)
     }
 
+
+
+
     return (
-        <authContext.Provider value={{ insertUserToken, token, clearUserToken }}>
+        <authContext.Provider value={{ insertUserToken, token, clearUserToken ,userId }}>
 
             {children}
 

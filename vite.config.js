@@ -1,13 +1,10 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-// import flowbiteReact from "flowbite-react/plugin/vite"; // deleted
+import flowbiteReact from "flowbite-react/plugin/vite"; // deleted
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [
-        react(), 
-        tailwindcss(), 
-        // flowbiteReact() // deleted
-    ]
+    plugins: [react(), // flowbiteReact() // deleted
+    tailwindcss(), flowbiteReact()]
 })

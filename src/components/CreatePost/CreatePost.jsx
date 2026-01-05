@@ -15,7 +15,7 @@ export default function CreatePost() {
   const imageInputElement = useRef(null);
 
   const isImageSelected = !!imagePreview;
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient(); // triger post list refresh // to update the post list after creating a new post
 
   // handle post creation & post methods
   const {  isPending, isError , mutate: triggerHandleCreatePost} = useMutation({
@@ -71,6 +71,8 @@ export default function CreatePost() {
       }
     })
   }
+
+
 
   return (
 

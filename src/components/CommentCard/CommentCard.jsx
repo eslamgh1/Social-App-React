@@ -27,7 +27,7 @@ export default function CommentCard({ commentDetails }) {
           <p>{commentDetails.content}</p>
         </div> */}
 
-        <PostHeader name={commentDetails.commentCreator.name} photo={commentDetails.commentCreator.photo} createdAt={commentDetails.createdAt}/>
+        <PostHeader postUserId={commentDetails.commentCreator._id} name={commentDetails.commentCreator.name} photo={commentDetails.commentCreator.photo} createdAt={commentDetails.createdAt}/>
         <p>{commentDetails.content}</p>
       </div>
 

@@ -2,24 +2,27 @@ import React from "react"
 import { useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { authContext } from "../../context/AuthContext"
+// import { NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react"
+import { NavbarBrand, NavbarCollapse, NavbarToggle } from "flowbite-react";
+
 
 export default function Navbar() {
 
   const navigate = useNavigate();
 
-  const { token ,clearUserToken } = useContext(authContext)
+  const { token, clearUserToken } = useContext(authContext)
 
-  function handleLogout(){
-      localStorage.removeItem("tkn")
-      clearUserToken()
-      navigate("/login")
-      
+  function handleLogout() {
+    localStorage.removeItem("tkn")
+    clearUserToken()
+    navigate("/login")
+
   }
 
   return (
     <>
       <nav className="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="max-w flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             Social App
           </Link>
@@ -74,6 +77,8 @@ export default function Navbar() {
         </div>
 
       </nav>
+
+
 
     </>
 
