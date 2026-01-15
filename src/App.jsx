@@ -9,6 +9,7 @@ import Profile from "./components/Profile/Profile"
 import AuthUser from "./components/ProtectedRoute/AuthUser"
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query"
 import PostDetails from "./components/PostDetails/PostDetails"
+import { ToastContainer } from "react-toastify"
 
 
 
@@ -41,17 +42,23 @@ const client = new QueryClient();
 
 
 export default function App() {
-  
+
   return (
+<>
 
-    <AuthContextProvider>
+      <AuthContextProvider>
 
-      <QueryClientProvider client={client}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+        <QueryClientProvider client={client}>
+          <RouterProvider router={router} />
+          
+        </QueryClientProvider>
 
-    </AuthContextProvider>
 
+      </AuthContextProvider>
+      <ToastContainer />
+      
+</>
+ 
   );
 }
 

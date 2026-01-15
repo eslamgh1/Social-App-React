@@ -4,7 +4,8 @@ import PostCard from "../PostCard/PostCard"
 import Spinner from "../Spinner/Spinner"
 import { useQuery } from "@tanstack/react-query"
 import CreatePost from "../CreatePost/CreatePost"
-
+// import { Helmet } from "react-helmet-async"
+// import { Helmet } from "react-helmet-async";
 
 
 export default function Home() {
@@ -58,7 +59,9 @@ export default function Home() {
 
     return (
         <>
-
+            {/* <Helmet>
+                <title>News feed</title>
+            </Helmet> */}
 
             <div className="w-1/2 mx-auto bg-gray-400 flex flex-col gap-3">
                 {/*CreatePost:  Post Part */}

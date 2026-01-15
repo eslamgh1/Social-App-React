@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const STATIC_USER_IMAGE = "https://res.cloudinary.com/demo/image/upload/d_avatar.png/non_existent_user.png"
 
@@ -24,9 +25,15 @@ export default function CreatePost() {
       console.log("Post created successfully:", res);
       handleCloseModel();
       queryClient.invalidateQueries(['getPosts']);
+      toast.success("Post created successfully", {
+        autoClose: 1000,
+        position: "top-center",
+        
+      });
     },
     onError: function (error) {
       console.error("Error creating post:", error);
+      toast.error("Error creating post");
     }
   });
 
